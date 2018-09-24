@@ -6,11 +6,11 @@ namespace Lootbox.Abstractions
     public abstract class Fraction<T> //: ICollection<T>
         where T : Slot<T>, new()
     {
-        [JsonProperty(PropertyName = "Slots", Order = 1)]
-        private ICollection<T> _items = new List<T>();
-
-        [JsonProperty(Order = 2)]
+        [JsonProperty(Order = 1)]
         public string Identifier { get; set; }
+
+        [JsonProperty(PropertyName = "Slots", Order = 2)]
+        private ICollection<T> _items = new List<T>();
 
         public Fraction()
         {

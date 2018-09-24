@@ -11,5 +11,7 @@ namespace Lootbox.Abstractions
 
         [JsonProperty("Fractions", Required = Required.Always, Order = 2)]
         FractionCollection<Tf, T> Fractions { get; }
+
+        string ToJsonString();
     }
 }

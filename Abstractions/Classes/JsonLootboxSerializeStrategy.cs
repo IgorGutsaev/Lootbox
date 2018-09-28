@@ -2,8 +2,7 @@
 
 namespace Lootbox.Abstractions
 {
-    public class JsonLootboxSerializeStrategy<Tf, Ts> : ILootboxSerializeStrategy<Tf, Ts>
-        where Tf : Fraction<Ts>, new()
+    public class JsonLootboxSerializeStrategy<Ts> : ILootboxSerializeStrategy<Ts>
         where Ts : Slot<Ts>, new()
     {
         private readonly JsonConverter[] _converters;
@@ -13,7 +12,7 @@ namespace Lootbox.Abstractions
             _converters = converters;
         }
 
-        public string Serialize<Tl>(Tl lootbox) where Tl : ILootbox<Tf, Ts>
+        public string Serialize<Tl>(Tl lootbox) where Tl : ILootbox<Ts>
         {
             return JsonConvert.SerializeObject(lootbox, Formatting.Indented, _converters);
         }

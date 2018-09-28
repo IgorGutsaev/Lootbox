@@ -5,11 +5,10 @@ using System.Linq;
 
 namespace Lootbox.Abstractions
 {
-    public class FractionCollection<Tf, T> : ICollection<Tf>
-        where Tf: Fraction<T>
+    public class FractionCollection<T> : ICollection<Fraction<T>>
         where T: Slot<T>, new()
     {
-        private ICollection<Tf> _items = new List<Tf>();
+        private ICollection<Fraction<T>> _items = new List<Fraction<T>>();
 
         public int Count => _items.Count;
 
@@ -20,16 +19,16 @@ namespace Lootbox.Abstractions
             get { return _items.FirstOrDefault(f => string.Equals(identifier, f.Identifier, StringComparison.InvariantCultureIgnoreCase)); }
         }
 
-        public void Add(Tf item)
+        public void Add(Fraction<T> item)
         {
             _items.Add(item);
         }
 
-        public FractionCollection<Tf, T> AppendFraction
+        public FractionCollection< T> AppendFraction
             (Fraction<T> item)
         {
             if (!_items.Any(f => string.Equals(f.Identifier, item.Identifier, StringComparison.InvariantCultureIgnoreCase)))
-                _items.Add((Tf)item);
+                _items.Add(item);
 
             return this;
         }
@@ -39,22 +38,22 @@ namespace Lootbox.Abstractions
             _items.Clear();
         }
 
-        public bool Contains(Tf item)
+        public bool Contains(Fraction<T> item)
         {
             return _items.Contains(item);
         }
 
-        public void CopyTo(Tf[] array, int arrayIndex)
+        public void CopyTo(Fraction<T>[] array, int arrayIndex)
         {
             _items.CopyTo(array, arrayIndex);
         }
 
-        public IEnumerator<Tf> GetEnumerator()
+        public IEnumerator<Fraction<T>> GetEnumerator()
         {
             return _items.GetEnumerator();
         }
 
-        public bool Remove(Tf item)
+        public bool Remove(Fraction<T> item)
         {
             return _items.Remove(item);
         }

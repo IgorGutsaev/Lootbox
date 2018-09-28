@@ -4,30 +4,29 @@ using System.Text;
 
 namespace Lootbox.Abstractions
 {
-    public abstract class LootboxBuilder<Tf, T>
-         where Tf : Fraction<T>, new()
+    public abstract class LootboxBuilder<T>
          where T : Slot<T>, new()
     {
-        protected Lootbox<Tf, T> box;
+        protected Lootbox<T> box;
 
-        public LootboxBuilder<Tf, T> AddFractions(Action<FractionCollection<Tf, T>> fractionsConfig)
+        public LootboxBuilder<T> AddFractions(Action<FractionCollection<T>> fractionsConfig)
         {
             fractionsConfig(box.Fractions);
             return this;
         }
 
-        public LootboxBuilder<Tf, T> SetVersion(string version)
+        public LootboxBuilder<T> SetVersion(string version)
         {
             box.Version = version.Trim();
             return this;
         }
 
-        public LootboxBuilder<Tf, T> SetStartDate(DateTime createdtime)
+        public LootboxBuilder<T> SetStartDate(DateTime createdtime)
         {
             box.Created = createdtime;
             return this;
         }
 
-        public Lootbox<Tf, T> Build() => box;
+        public Lootbox<T> Build() => box;
     }
 }

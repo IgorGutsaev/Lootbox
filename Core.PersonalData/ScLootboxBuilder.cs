@@ -2,7 +2,7 @@
 
 namespace Lootbox.Core
 {
-    public class ScLootboxBuilder : LootboxBuilder<ScFraction, ScSlot>
+    public class ScLootboxBuilder : LootboxBuilder<ScSlot>
     {
         public ScLootboxBuilder()
         {

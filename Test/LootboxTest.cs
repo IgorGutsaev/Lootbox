@@ -14,14 +14,15 @@ namespace Lootbox.Test
     public class LootboxTest
     {
         private readonly ITestOutputHelper output;
-        private readonly ILootboxSerializer<ILootbox<ScFraction, ScSlot>> serializer = null;
+        private readonly ILootboxSerializer<ILootbox<ScSlot>> serializer = null;
 
         public LootboxTest(ITestOutputHelper output)
         {
-            serializer = new LootboxDefaultSerializer<ScFraction, ScSlot>(
-               new JsonLootboxSerializeStrategy<ScFraction, ScSlot>(new ScSlotConverter()
-               , new ScFractionConverter()
-               , new ScLootboxConverter()));
+            serializer = new LootboxDefaultSerializer<ScSlot>(
+               new JsonLootboxSerializeStrategy<ScSlot>(
+                   new ScSlotConverter()
+                   , new ScFractionConverter()
+                   , new ScLootboxConverter()));
 
             this.output = output;
         }

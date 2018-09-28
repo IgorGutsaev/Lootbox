@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 
 namespace Lootbox.Core
 {
-    public class ScLootbox : Lootbox<ScFraction, ScSlot>
+    public class ScLootbox : Lootbox<ScSlot>
     {
         public override string ToJsonString()
         {

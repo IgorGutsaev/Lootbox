@@ -2,9 +2,26 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <PackageId>Clipcoin.Lootbox.Abstractions</PackageId>
+    <Authors>igorgy</Authors>
+    <Product>Lootbox</Product>
+    <Company>AppCore</Company>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>C:\Users\Павел\source\repos\Lootbox\Abstractions\Lootbox.Abstractions.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Classes\LootboxBinderSettings" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="Classes\LootboxBinderSettings" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="2.1.1" />
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
     <PackageReference Include="Newtonsoft.Json.Schema" Version="3.0.10" />
   </ItemGroup>

@@ -5,9 +5,9 @@ namespace Lootbox.Core
     public class ScSlot : Slot<ScSlot>
     {
         public string Identifier { get; set; }
-        public string Value { get; set; }
+        public object Value { get; set; }
 
-        public static ScSlot Create(string identifier, string value)
+        public static ScSlot Create(string identifier, object value)
         {
             return new ScSlot()
             {

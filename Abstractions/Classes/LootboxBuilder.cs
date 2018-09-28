@@ -22,6 +22,12 @@ namespace Lootbox.Abstractions
             return this;
         }
 
+        public LootboxBuilder<Tf, T> SetStartDate(DateTime createdtime)
+        {
+            box.Created = createdtime;
+            return this;
+        }
+
         public Lootbox<Tf, T> Build() => box;
     }
 }

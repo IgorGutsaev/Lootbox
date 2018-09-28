@@ -2,6 +2,14 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <Company>AppCore</Company>
+    <Product>Lootbox</Product>
+    <Authors>igorgy</Authors>
+    <PackageId>Clipcoin.Lootbox.Core</PackageId>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>C:\Users\Павел\source\repos\Lootbox\Core.PersonalData\Lootbox.Core.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>

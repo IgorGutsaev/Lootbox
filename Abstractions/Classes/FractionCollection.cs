@@ -15,6 +15,11 @@ namespace Lootbox.Abstractions
 
         public bool IsReadOnly => false;
 
+        public Fraction<T> this[string identifier]
+        {
+            get { return _items.FirstOrDefault(f => string.Equals(identifier, f.Identifier, StringComparison.InvariantCultureIgnoreCase)); }
+        }
+
         public void Add(Tf item)
         {
             _items.Add(item);

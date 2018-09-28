@@ -1,9 +1,11 @@
 ﻿using Newtonsoft.Json;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Lootbox.Abstractions
 {
-    public abstract class Fraction<T> //: ICollection<T>
+    public abstract class Fraction<T> : ICollection<T>
         where T : Slot<T>, new()
     {
         [JsonProperty(Order = 1)]
@@ -69,9 +71,9 @@ namespace Lootbox.Abstractions
             return Identifier;
         }
 
-        //IEnumerator IEnumerable.GetEnumerator()
-        //{
-        //    return _items.GetEnumerator();
-        //}
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return _items.GetEnumerator();
+        }
     }
 }

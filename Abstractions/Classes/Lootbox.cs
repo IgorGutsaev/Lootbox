@@ -11,8 +11,10 @@ namespace Lootbox.Abstractions
         public FractionCollection<Tf, T> Fractions { get; private set; } = new FractionCollection<Tf, T>();
 
         public string Version { get; set; }
+        public DateTime Created { get; set; }
+        public DateTime LastUpdate { get; set; }
 
-        public string ToJsonString()
+        public virtual string ToJsonString()
         {
             return JsonConvert.SerializeObject(this);
         }

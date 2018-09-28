@@ -6,14 +6,21 @@ namespace Lootbox.Abstractions
         where Tf : Fraction<Ts>, new()
         where Ts : Slot<Ts>, new()
     {
+        private readonly JsonConverter[] _converters;
+
+        public JsonLootboxSerializeStrategy(params JsonConverter[] converters)
+        {
+            _converters = converters;
+        }
+
         public string Serialize<Tl>(Tl lootbox) where Tl : Lootbox<Tf, Ts>, new()
         {
-            return JsonConvert.SerializeObject(lootbox, Formatting.Indented);
+            return JsonConvert.SerializeObject(lootbox, Formatting.Indented, _converters);
         }
 
         public Tl Deserialize<Tl>(string value) where Tl : Lootbox<Tf, Ts>, new()
         {
-            return JsonConvert.DeserializeObject<Tl>(value);
+            return JsonConvert.DeserializeObject<Tl>(value, _converters);
         }
     }
 }

@@ -1,13 +1,13 @@
 ﻿namespace Lootbox.Abstractions
 {
-    public class LootboxSerializer<Tl, Tf, Ts> : ILootboxSerializer<Tl>
+    public class LootboxDefaultSerializer<Tl, Tf, Ts> : ILootboxSerializer<Tl>
         where Tl : Lootbox<Tf, Ts>, new()
         where Tf : Fraction<Ts>, new()
         where Ts : Slot<Ts>, new()
     {       
         public readonly ILootboxSerializeStrategy<Tf, Ts> _strategy;
 
-        public LootboxSerializer(ILootboxSerializeStrategy<Tf, Ts> strategy)
+        public LootboxDefaultSerializer(ILootboxSerializeStrategy<Tf, Ts> strategy)
         {
             _strategy = strategy;
         }

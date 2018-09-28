@@ -1,25 +1,27 @@
 ﻿using Newtonsoft.Json;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Lootbox.Abstractions
 {
-    public class JsonLootboxSerializeStrategy<Ts> : ILootboxSerializeStrategy<Ts>
+    public class JsonLootboxSerializeStrategy<Ts> : ILootboxSerializeStrategy
         where Ts : Slot<Ts>, new()
     {
-        private readonly JsonConverter[] _converters;
+        private readonly IEnumerable<JsonConverter> _converters;
 
-        public JsonLootboxSerializeStrategy(params JsonConverter[] converters)
+        public JsonLootboxSerializeStrategy(IJsonConvertersFabric fabric)
         {
-            _converters = converters;
+            _converters = fabric.BuildConverters();
         }
 
-        public string Serialize<Tl>(Tl lootbox) where Tl : ILootbox<Ts>
+        public string Serialize(object lootbox)
         {
-            return JsonConvert.SerializeObject(lootbox, Formatting.Indented, _converters);
+            return JsonConvert.SerializeObject(lootbox, Formatting.Indented, _converters.ToArray());
         }
 
         public Tl Deserialize<Tl>(string value) where Tl : new()
         {
-            return JsonConvert.DeserializeObject<Tl>(value, _converters);
+            return JsonConvert.DeserializeObject<Tl>(value, _converters.ToArray());
         }
     }
 }

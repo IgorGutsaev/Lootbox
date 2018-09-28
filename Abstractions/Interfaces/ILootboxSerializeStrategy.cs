@@ -4,11 +4,9 @@ using System.Text;
 
 namespace Lootbox.Abstractions
 {
-    public interface ILootboxSerializeStrategy<Ts>
-        where Ts : Slot<Ts>, new()
+    public interface ILootboxSerializeStrategy
     {
-        string Serialize<Tl>(Tl lootbox)
-            where Tl : ILootbox<Ts>;
+        string Serialize(object lootbox);
 
         Tl Deserialize<Tl>(string value)
             where Tl : new();

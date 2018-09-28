@@ -12,7 +12,7 @@ namespace Lootbox.Core
         private readonly ScLootbox _lootbox;
 
         public LootboxBinder(ISettingsInjector<LootboxBinder, LootboxBinderSettings> settingsInjector
-            , ILootboxSerializer<ScLootbox> lootboxSerializer
+            , ILootboxSerializer lootboxSerializer
             , ILootboxMapper mapper)
         {
             _mapper = mapper;

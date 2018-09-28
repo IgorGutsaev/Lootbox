@@ -9,9 +9,9 @@ namespace Lootbox.Abstractions
         where Ts : Slot<Ts>, new()
     {
         string Serialize<Tl>(Tl lootbox)
-            where Tl : Lootbox<Tf, Ts>, new();
+            where Tl : ILootbox<Tf, Ts>;
 
         Tl Deserialize<Tl>(string value)
-            where Tl : Lootbox<Tf, Ts>, new();
+            where Tl : new();
     }
 }

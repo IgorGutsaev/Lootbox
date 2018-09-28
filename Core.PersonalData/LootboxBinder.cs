@@ -19,8 +19,8 @@ namespace Lootbox.Core
             _settings = settingsInjector?.Settings
                 ?? throw new ArgumentNullException(nameof(settingsInjector));
 
-            _lootbox = ScLootbox
-            _settings.FileLocation
+           // _lootbox = ScLootbox
+           // _settings.FileLocation
         }
 
         public bool Bind(ILootboxBindableObject data)

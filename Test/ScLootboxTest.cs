@@ -65,7 +65,7 @@ namespace Lootbox.Test
 
         public static IEnumerable<object[]> ScLootboxJsonSet()
         {
-            var ser = new LootboxDefaultSerializer<ScLootbox, ScFraction, ScSlot>(
+            var ser = new LootboxDefaultSerializer<ScFraction, ScSlot>(
                 new JsonLootboxSerializeStrategy<ScFraction, ScSlot>(new ScSlotConverter()
                 , new ScFractionConverter()
                 , new ScLootboxConverter()));

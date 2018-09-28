@@ -13,12 +13,12 @@ namespace Lootbox.Abstractions
             _converters = converters;
         }
 
-        public string Serialize<Tl>(Tl lootbox) where Tl : Lootbox<Tf, Ts>, new()
+        public string Serialize<Tl>(Tl lootbox) where Tl : ILootbox<Tf, Ts>
         {
             return JsonConvert.SerializeObject(lootbox, Formatting.Indented, _converters);
         }
 
-        public Tl Deserialize<Tl>(string value) where Tl : Lootbox<Tf, Ts>, new()
+        public Tl Deserialize<Tl>(string value) where Tl : new()
         {
             return JsonConvert.DeserializeObject<Tl>(value, _converters);
         }

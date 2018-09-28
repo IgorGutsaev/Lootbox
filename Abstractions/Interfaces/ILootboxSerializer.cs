@@ -8,6 +8,6 @@ namespace Lootbox.Abstractions
     {
         string Serialize(T lootbox);
 
-        T Deserialize(string value);
+        Tl Deserialize<Tl>(string value) where Tl : new();
     }
 }

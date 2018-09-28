@@ -14,11 +14,11 @@ namespace Lootbox.Test
     public class LootboxTest
     {
         private readonly ITestOutputHelper output;
-        private readonly LootboxDefaultSerializer<ScLootbox, ScFraction, ScSlot> serializer = null;
+        private readonly ILootboxSerializer<ILootbox<ScFraction, ScSlot>> serializer = null;
 
         public LootboxTest(ITestOutputHelper output)
         {
-            serializer = new LootboxDefaultSerializer<ScLootbox, ScFraction, ScSlot>(
+            serializer = new LootboxDefaultSerializer<ScFraction, ScSlot>(
                new JsonLootboxSerializeStrategy<ScFraction, ScSlot>(new ScSlotConverter()
                , new ScFractionConverter()
                , new ScLootboxConverter()));
@@ -33,11 +33,10 @@ namespace Lootbox.Test
             // Pre-validate
             Assert.NotNull(lootbox);
             Assert.NotNull(serializer);
-            Assert.NotNull(serializer._strategy);
 
             // Perform
             string serialized = serializer.Serialize(lootbox);
-            var deserialized = serializer.Deserialize(serialized);
+            var deserialized = serializer.Deserialize<ScLootbox>(serialized);
 
             // Post-validate
             Assert.NotNull(deserialized);
@@ -95,7 +94,7 @@ namespace Lootbox.Test
             }
 
             // Post-validate
-            IEnumerable<ScLootbox> result = matchingDatas.Select(m => serializer.Deserialize(m))
+            IEnumerable<ScLootbox> result = matchingDatas.Select(m => serializer.Deserialize<ScLootbox>(m))
                 .Where(x => x.Fractions["SocDemog"]
                     .Where(s => s.Identifier == "Birthday"
                         && ((long)s.Value < fromInTicks || (long)s.Value > endInTicks)).Any());
@@ -145,7 +144,7 @@ namespace Lootbox.Test
             }
 
             // Post-validate
-            IEnumerable<ScLootbox> result = matchingDatas.Select(m => serializer.Deserialize(m))
+            IEnumerable<ScLootbox> result = matchingDatas.Select(m => serializer.Deserialize<ScLootbox>(m))
                 .Where(x => x.Fractions["SocDemog"]
                     .Where(s => s.Identifier == "Name"
                         && !nameInvariants.Contains(s.Value)).Any());

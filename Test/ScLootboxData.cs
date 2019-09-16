@@ -15,7 +15,7 @@ namespace Lootbox.Test
             yield return new ScLootboxBuilder()
                     .AddFractions((l) =>
                         l.AppendFraction(new ScFraction { Identifier = "SocDemog" }
-                            .AppendSlot(ScSlot.Create("Name", "Иван"))
+                            .AppendSlot(ScSlot.Create("Name", "Foo"))
                             .AppendSlot(ScSlot.Create("Birthday", new DateTime(2000, 9, 26).Ticks)))
                         .AppendFraction(new ScFraction { Identifier = "Consumer" })
                     )
@@ -26,7 +26,7 @@ namespace Lootbox.Test
             yield return new ScLootboxBuilder()
                     .AddFractions((l) =>
                         l.AppendFraction(new ScFraction { Identifier = "SocDemog" }
-                            .AppendSlot(ScSlot.Create("Name", "Толик"))
+                            .AppendSlot(ScSlot.Create("Name", "Bar"))
                             .AppendSlot(ScSlot.Create("Birthday", new DateTime(2005, 7, 31).Ticks)))
                         .AppendFraction(new ScFraction { Identifier = "Consumer" })
                     )
@@ -37,7 +37,7 @@ namespace Lootbox.Test
             yield return new ScLootboxBuilder()
                     .AddFractions((l) =>
                         l.AppendFraction(new ScFraction { Identifier = "SocDemog" }
-                            .AppendSlot(ScSlot.Create("Name", "Василий"))
+                            .AppendSlot(ScSlot.Create("Name", "Baz"))
                             .AppendSlot(ScSlot.Create("Birthday", new DateTime(1988, 2, 14).Ticks)))
                         .AppendFraction(new ScFraction { Identifier = "Consumer" })
                     )
@@ -48,7 +48,7 @@ namespace Lootbox.Test
             yield return new ScLootboxBuilder()
                     .AddFractions((l) =>
                         l.AppendFraction(new ScFraction { Identifier = "SocDemog" }
-                            .AppendSlot(ScSlot.Create("Name", "Ирина"))
+                            .AppendSlot(ScSlot.Create("Name", "FooBar"))
                             .AppendSlot(ScSlot.Create("Birthday", new DateTime(2009, 11, 1).Ticks)))
                         .AppendFraction(new ScFraction { Identifier = "Consumer" })
                     )
